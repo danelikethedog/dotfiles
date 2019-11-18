@@ -101,5 +101,7 @@ alias gs="git status"
 alias gl="git log --oneline -n 10"
 alias gcm="git checkout master"
 alias gc-="git checkout -"
+alias gp="git pull"
 alias gsquash="OUTPUT=$(git rev-list --count HEAD ^master);git reset --soft HEAD~$OUTPUT"
+
 
