@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dwalton/.oh-my-zsh"
+export ZSH="/home/dane/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -103,5 +103,5 @@ alias gcm="git checkout master"
 alias gc-="git checkout -"
 alias gp="git pull"
 alias gsquash="OUTPUT=$(git rev-list --count HEAD ^master);git reset --soft HEAD~$OUTPUT"
-
+alias gsu="git submodule update --init --recursive"
 
