@@ -69,6 +69,8 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+plugins=(zsh-autosuggestions)
+plugins=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,4 +106,9 @@ alias gc-="git checkout -"
 alias gp="git pull"
 alias gsquash="OUTPUT=$(git rev-list --count HEAD ^master);git reset --soft HEAD~$OUTPUT"
 alias gsu="git submodule update --init --recursive"
+alias hydrapaper="flatpak run org.gabmus.hydrapaper"
+alias runmop="cd ~/workspace/src/github.com/mop-tracker/mop/ && make"
+alias wthr="curl wttr.in"
 
+export GOPATH="$HOME/workspace"
+export PATH=$PATH":$HOME/bin"
