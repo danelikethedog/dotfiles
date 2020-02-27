@@ -104,6 +104,7 @@ alias gl="git log --oneline -n 10"
 alias gcm="git checkout master"
 alias gc-="git checkout -"
 alias gp="git pull"
+alias gfu="git fetch upstream master;git rebase upstream/master"
 alias gsquash="OUTPUT=$(git rev-list --count HEAD ^master);git reset --soft HEAD~$OUTPUT"
 alias gsu="git submodule update --init --recursive"
 alias hydrapaper="flatpak run org.gabmus.hydrapaper"
@@ -112,3 +113,4 @@ alias wthr="curl wttr.in"
 
 export GOPATH="$HOME/workspace"
 export PATH=$PATH":$HOME/bin"
+
