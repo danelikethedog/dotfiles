@@ -53,3 +53,10 @@ nmap Q <Nop>
  inoremap <Right> <ESC>:echoe "Use l"<CR>
  inoremap <Up>    <ESC>:echoe "Use k"<CR>
  inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+ " Add clang-format binding
+ map <C-K> :py3f ~/clang-format.py<cr>
+
+" git clone https://github.com/preservim/nerdtree.git at ~/.vim/pack/vendor/start/
+ " Add nerdtree binding 
+ map <C-n> :NERDTreeToggle<cr>
