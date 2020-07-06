@@ -60,3 +60,6 @@ nmap Q <Nop>
 " git clone https://github.com/preservim/nerdtree.git at ~/.vim/pack/vendor/start/
  " Add nerdtree binding 
  map <C-n> :NERDTreeToggle<cr>
+
+ " Set ctags file
+ set tags=./tags,tags;$HOME
