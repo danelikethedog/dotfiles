@@ -1,4 +1,3 @@
-
 " Map F6 to tab previous
 map <F6> :tabp<CR>
 
@@ -63,3 +62,13 @@ nmap Q <Nop>
 
  " Set ctags file
  set tags=./tags,tags;$HOME
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+fu! Formatonsave()
+  let l:formatdiff = 1
+  py3f ~/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.c,*.cpp call Formatonsave()
+
+
