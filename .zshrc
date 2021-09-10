@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias gs="git status"
 alias gl="git log --oneline -n 10"
 alias gcm="git checkout master"
@@ -113,4 +114,27 @@ alias wthr="curl wttr.in"
 
 export GOPATH="$HOME/workspace"
 export PATH=$PATH":$HOME/bin"
+export VCPKG_ROOT=/home/dawalton/repos/vcpkg
+export VCPKG_DEFAULT_TRIPLET=x64-linux
 
+mk-ec-cert() {
+    if [ -n "$1" ]; then
+      openssl ecparam -out device_ec_key.pem -name prime256v1 -genkey
+      openssl req -new -days 30 -nodes -x509 -key device_ec_key.pem -out device_ec_cert.pem -subj "/CN=$1"
+      cat device_ec_cert.pem device_ec_key.pem > device_cert_store.pem  
+      openssl x509 -noout -fingerprint -in device_ec_cert.pem | sed 's/://g'| sed 's/\(SHA1 Fingerprint=\)//g' | tee fingerprint.txt
+    else
+      echo "Supply a name for the device"
+    fi
+}
+
+mk-rsa-cert() {
+    if [ -n "$1" ]; then
+      openssl genrsa -out device_ec_key.pem 2048
+      openssl req -new -days 30 -nodes -x509 -key device_ec_key.pem -out device_ec_cert.pem -subj "/CN=$1"
+      cat device_ec_cert.pem device_ec_key.pem > device_cert_store.pem
+      openssl x509 -noout -fingerprint -in device_ec_cert.pem | sed 's/://g'| sed 's/\(SHA1 Fingerprint=\)//g' | tee fingerprint.txt
+    else
+      echo "Supply a name for the device"
+    fi
+}
