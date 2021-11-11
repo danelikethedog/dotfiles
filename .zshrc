@@ -141,3 +141,5 @@ mk-rsa-cert() {
       echo "Supply a name for the device"
     fi
 }
+
+eval "$(starship init zsh)"
