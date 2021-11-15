@@ -5,10 +5,11 @@ mv .git .gitignore .vimrc .tmux.conf README .zshrc ~/
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install -y build-essentials git tmux vim clang-format libcmocka-dev zsh curl software-properties-common
+sudo apt-get install -y build-essentials git tmux vim clang-format libcmocka-dev zsh curl software-properties-common 
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 # Install syntax highlighting
 pushd ~/.oh-my-zsh/custom/plugins
