@@ -20,6 +20,10 @@ pushd ~/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 
 popd
 
+pushd ~/.ssh
+ssh-keygen -t ed25519 -C "dawalton@microsoft.com"
+popd
+
 source ~/.zshrc
 
 
