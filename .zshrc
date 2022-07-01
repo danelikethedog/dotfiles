@@ -103,27 +103,26 @@ export EDITOR='vim'
 
 alias gs="git status"
 alias gl="git log --oneline -n 10"
-alias gcm="git checkout master"
 alias gc-="git checkout -"
 alias gp="git pull"
-alias gfu="git fetch upstream master;git rebase upstream/master"
-alias gsquash="OUTPUT=$(git rev-list --count HEAD ^master);git reset --soft HEAD~$OUTPUT"
-alias grev="git rev-list --count HEAD ^master"
+alias grev="git rev-list --count HEAD ^main"
 alias gsu="git submodule update --init --recursive"
 alias bb="cmake --build build"
 alias hydrapaper="flatpak run org.gabmus.hydrapaper"
 alias runmop="cd ~/workspace/src/github.com/mop-tracker/mop/ && make"
 alias wthr="curl wttr.in"
+alias stylesource="cd libs/azure-iot-middleware-freertos && ./.github/scripts/code_style.sh fix && ../.."
+alias ctest="ctest --output-on-failure"
 
 export GOPATH="$HOME/workspace"
-export PATH=$PATH":$HOME/bin"
+export PATH=$PATH":$HOME/bin:$HOME/swift/usr/bin"
 export VCPKG_ROOT=/home/dawalton/repos/vcpkg
 export VCPKG_DEFAULT_TRIPLET=x64-linux
 
 mk-ec-cert() {
     if [ -n "$1" ]; then
       openssl ecparam -out device_ec_key.pem -name prime256v1 -genkey
-      openssl req -new -days 30 -nodes -x509 -key device_ec_key.pem -out device_ec_cert.pem -subj "/CN=$1"
+      openssl req -new -days 365 -nodes -x509 -key device_ec_key.pem -out device_ec_cert.pem -subj "/CN=$1"
       cat device_ec_cert.pem device_ec_key.pem > device_cert_store.pem  
       openssl x509 -noout -fingerprint -in device_ec_cert.pem | sed 's/://g'| sed 's/\(SHA1 Fingerprint=\)//g' | tee fingerprint.txt
     else
@@ -134,7 +133,7 @@ mk-ec-cert() {
 mk-rsa-cert() {
     if [ -n "$1" ]; then
       openssl genrsa -out device_ec_key.pem 2048
-      openssl req -new -days 30 -nodes -x509 -key device_ec_key.pem -out device_ec_cert.pem -subj "/CN=$1"
+      openssl req -new -days 365 -nodes -x509 -key device_ec_key.pem -out device_ec_cert.pem -subj "/CN=$1"
       cat device_ec_cert.pem device_ec_key.pem > device_cert_store.pem
       openssl x509 -noout -fingerprint -in device_ec_cert.pem | sed 's/://g'| sed 's/\(SHA1 Fingerprint=\)//g' | tee fingerprint.txt
     else
@@ -145,3 +144,4 @@ mk-rsa-cert() {
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
